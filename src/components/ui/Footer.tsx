@@ -53,57 +53,134 @@ export default function Footer() {
     { name: 'WhatsApp', icon: MessageCircle, href: '#' },
   ];
 
+  const colStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+  };
+
+  const linkStyle: React.CSSProperties = {
+    color: '#9ca3af',
+    textDecoration: 'none',
+    fontSize: '0.875rem',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.6rem',
+    transition: 'color 0.3s',
+    lineHeight: 1,
+  };
+
+  const dotStyle: React.CSSProperties = {
+    width: '6px',
+    height: '6px',
+    backgroundColor: 'rgba(249,115,22,0.5)',
+    borderRadius: '50%',
+    flexShrink: 0,
+    display: 'inline-block',
+  };
+
+  const headingStyle: React.CSSProperties = {
+    fontSize: '1.05rem',
+    marginBottom: '1.5rem',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.4rem',
+    color: '#fff',
+    fontWeight: 'bold',
+  };
+
   return (
     <footer
       ref={footerRef}
-      className="relative pt-16 pb-8 overflow-hidden bg-black z-50"
+      style={{
+        position: 'relative',
+        paddingBottom: '2rem',
+        overflow: 'hidden',
+        backgroundColor: '#000',
+        zIndex: 50,
+        width: '100%',
+        boxSizing: 'border-box',
+      }}
       id="join"
     >
       {/* Gradient top border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
-      
-      <div className="max-w-7xl ml-auto mr-8 px-6 sm:px-8 lg:px-12 w-full flex flex-col items-end">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24 mb-24 justify-start max-w-6xl w-full">
-          {/* IEEE CS Brand Section */}
-          <div className={`reveal text-left pt-16 ${isVisible ? 'active' : ''}`}>
-            <div className="mb-8">
-              <img src="/ieee-cs-logo.png" alt="IEEE CS Logo" className="w-full h-auto object-contain" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent" />
+
+      {/* Centered container */}
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '1100px',
+          margin: '0 auto',
+          paddingLeft: '2rem',
+          paddingRight: '2rem',
+          boxSizing: 'border-box',
+        }}
+      >
+        {/* 4-column grid — columns sized to content, not equal fractions */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.4fr 1fr 1fr 1.2fr',
+            columnGap: '2rem',
+            rowGap: '2rem',
+            paddingTop: '1rem',
+            paddingBottom: '1.5rem',
+            alignItems: 'start',
+          }}
+        >
+          {/* ── Col 1: Brand ── */}
+          <div className={`reveal ${isVisible ? 'active' : ''}`} style={colStyle}>
+            <div style={{ marginBottom: '1.25rem', width: '9rem' }}>
+              <img
+                src="/ieee-cs-logo.png"
+                alt="IEEE CS Logo"
+                style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+              />
             </div>
-            <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-sm">
+            <p style={{ color: '#9ca3af', fontSize: '0.875rem', lineHeight: '1.65', marginBottom: '1.75rem' }}>
               Advancing technology for humanity through innovation, education, and collaboration.
             </p>
-            <div className="flex gap-4 justify-start">
+            <div style={{ display: 'flex', gap: '0.6rem' }}>
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 border border-orange-500/30 rounded-lg hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all duration-300"
                   aria-label={link.name}
+                  className="hover:bg-orange-500 hover:border-orange-500 hover:text-black transition-all duration-300"
+                  style={{
+                    width: '2.25rem',
+                    height: '2.25rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px solid rgba(249,115,22,0.3)',
+                    borderRadius: '0.5rem',
+                    color: '#9ca3af',
+                    textDecoration: 'none',
+                    flexShrink: 0,
+                  }}
                 >
-                  <link.icon className="w-5 h-5" />
+                  <link.icon style={{ width: '1.1rem', height: '1.1rem' }} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* ── Col 2: Quick Links ── */}
           <div
-            className={`reveal text-left pt-16 ${isVisible ? 'active' : ''}`}
-            style={{ transitionDelay: '0.1s' }}
+            className={`reveal ${isVisible ? 'active' : ''}`}
+            style={{ ...colStyle, transitionDelay: '0.1s' }}
           >
-            <h4 className="font-orbitron font-bold text-white text-xl mb-10 flex items-center justify-start gap-3">
-              <span className="text-orange-500">&gt;</span> Quick Links
+            <h4 className="font-orbitron" style={headingStyle}>
+              <span style={{ color: '#f97316' }}>&gt;</span> Quick Links
             </h4>
-            <ul className="space-y-6 flex flex-col items-start">
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-base flex items-center gap-3 group py-1"
-                  >
-                    <span className="w-1.5 h-1.5 bg-orange-500/50 rounded-full group-hover:bg-orange-500 transition-colors"></span>
+                  <a href={link.href} className="hover:text-orange-500" style={linkStyle}>
+                    <span style={dotStyle} />
                     {link.name}
                   </a>
                 </li>
@@ -111,63 +188,66 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* ── Col 3: Resources ── */}
           <div
-            className={`reveal text-left pt-16 ${isVisible ? 'active' : ''}`}
-            style={{ transitionDelay: '0.2s' }}
+            className={`reveal ${isVisible ? 'active' : ''}`}
+            style={{ ...colStyle, transitionDelay: '0.2s' }}
           >
-            <h4 className="font-orbitron font-bold text-white text-xl mb-10 flex items-center justify-start gap-3">
-              <span className="text-orange-500">&gt;</span> Resources
+            <h4 className="font-orbitron" style={headingStyle}>
+              <span style={{ color: '#f97316' }}>&gt;</span> Resources
             </h4>
-            <ul className="space-y-6 flex flex-col items-start">
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
               {resources.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300 text-base flex items-center gap-3 group py-1"
+                    className="hover:text-orange-500 group"
+                    style={linkStyle}
                   >
-                    <span className="w-1.5 h-1.5 bg-orange-500/50 rounded-full group-hover:bg-orange-500 transition-colors"></span>
+                    <span style={dotStyle} />
                     {link.name}
-                    <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ExternalLink style={{ width: '0.7rem', height: '0.7rem', opacity: 0, marginLeft: 'auto' }} className="group-hover:opacity-100 transition-opacity" />
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* ── Col 4: Contact ── */}
           <div
-            className={`reveal text-left pt-16 ${isVisible ? 'active' : ''}`}
-            style={{ transitionDelay: '0.3s' }}
+            className={`reveal ${isVisible ? 'active' : ''}`}
+            style={{ ...colStyle, transitionDelay: '0.3s' }}
           >
-            <h4 className="font-orbitron font-bold text-white text-xl mb-10 flex items-center justify-start gap-3">
-              <span className="text-orange-500">&gt;</span> Contact
+            <h4 className="font-orbitron" style={headingStyle}>
+              <span style={{ color: '#f97316' }}>&gt;</span> Contact
             </h4>
-            <ul className="space-y-8 flex flex-col items-start">
-              <li className="flex items-start gap-4">
-                <MapPin className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
-                <span className="text-gray-400 text-base leading-relaxed">
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem' }}>
+                <MapPin style={{ width: '0.95rem', height: '0.95rem', color: '#f97316', marginTop: '0.15rem', flexShrink: 0 }} />
+                <span style={{ color: '#9ca3af', fontSize: '0.875rem', lineHeight: '1.6' }}>
                   Manipal University Jaipur,<br />
                   Dehmi Kalan, Jaipur-Ajmer Expressway,<br />
                   Rajasthan 303007
                 </span>
               </li>
-              <li className="flex items-center gap-4">
-                <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <Mail style={{ width: '0.95rem', height: '0.95rem', color: '#f97316', flexShrink: 0 }} />
                 <a
                   href="mailto:contact@ieeecsmuj.com"
-                  className="text-gray-400 hover:text-orange-500 transition-colors text-base"
+                  className="hover:text-orange-500 transition-colors"
+                  style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.875rem' }}
                 >
                   contact@ieeecsmuj.com
                 </a>
               </li>
-              <li className="flex items-center gap-4">
-                <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <li style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <Phone style={{ width: '0.95rem', height: '0.95rem', color: '#f97316', flexShrink: 0 }} />
                 <a
                   href="tel:+919871340076"
-                  className="text-gray-400 hover:text-orange-500 transition-colors text-base"
+                  className="hover:text-orange-500 transition-colors"
+                  style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '0.875rem' }}
                 >
                   +91 98713 40076
                 </a>
@@ -176,33 +256,59 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Terminal Section */}
+        {/* ── Terminal bottom bar ── */}
         <div
-          className={`reveal border-t border-orange-500/20 pt-12 max-w-6xl w-full ${isVisible ? 'active' : ''}`}
-          style={{ transitionDelay: '0.4s' }}
+          className={`reveal ${isVisible ? 'active' : ''}`}
+          style={{ borderTop: '0.001px solid rgba(249,115,22,0.2)', paddingTop: '0.01rem', transitionDelay: '0.4s' }}
         >
-          <div className="glass rounded-2xl p-8 md:p-10 font-mono text-base">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 text-left">
-              <div className="flex items-center justify-start gap-3 text-gray-400">
-                <span className="text-orange-500 text-lg">$</span>
-                <span>© 2024 IEEE CS MUJ. All systems operational.</span>
-                <span className="animate-pulse text-orange-500">_</span>
-              </div>
-              <div className="flex items-center justify-start gap-3 text-gray-500">
-                <span>Made with</span>
-                <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-                <span>by IEEE CS MUJ Team</span>
-              </div>
+          <div
+            className="glass"
+            style={{
+              borderRadius: '100px',
+              padding: '0.35rem 0.35rem',
+              fontFamily: 'monospace',
+              fontSize: '0.875rem',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '0.10rem',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.20rem', color: '#9ca3af' }}>
+              <span style={{ color: '#f97316', fontWeight: 'bold', fontSize: '1rem' }}>$</span>
+              <span>© 2024 IEEE CS MUJ. All systems operational.</span>
+              <span className="animate-pulse" style={{ color: '#f97316' }}>_</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.20rem', color: '#6b7280' }}>
+              <span>Made with</span>
+              <Heart style={{ width: '0.9rem', height: '0.9rem', color: '#ef4444', fill: '#ef4444' }} />
+              <span>by IEEE CS MUJ Team</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Background text */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden pointer-events-none opacity-[0.05] z-0">
-        <div className="font-orbitron text-[20vw] font-bold text-gray-500 whitespace-nowrap">
+      {/* Background watermark */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          pointerEvents: 'none',
+          opacity: 0.06,
+          zIndex: 0,
+          overflow: 'hidden',
+          width: '100%',
+          textAlign: 'center',
+          userSelect: 'none',
+        }}
+      >
+        <span className="font-orbitron" style={{ fontSize: '22vw', fontWeight: 'bold', color: '#9ca3af', whiteSpace: 'nowrap' }}>
           IEEE CS
-        </div>
+        </span>
       </div>
 
       <style jsx>{`
@@ -211,16 +317,16 @@ export default function Footer() {
           transform: translateY(30px);
           transition: all 0.6s ease-out;
         }
-        
+
         .reveal.active {
           opacity: 1;
           transform: translateY(0);
         }
-        
+
         .glass {
-          background: rgba(0, 0, 0, 0.5);
+          background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(249, 115, 22, 0.2);
+          border: 2px solid rgba(249, 115, 22, 0.2);
         }
       `}</style>
     </footer>
