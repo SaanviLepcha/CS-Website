@@ -1,7 +1,7 @@
 .container {
     margin: 0 auto;
     min-height: 100vh;
-    background: black;
+    background: transparent !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,60 +41,111 @@
     overflow: hidden;
     transition: transform 1s ease;
     transform:
-        rotate(var(--rotate))
-        translateX(calc(var(--translateX) + var(--offsetTranslateX)))
-        translateY(calc(var(--translateY) + var(--offsetY)));
+        rotate(var(--rotate)) translateX(calc(var(--translateX) + var(--offsetTranslateX))) translateY(calc(var(--translateY) + var(--offsetY)));
 }
 
-.card:nth-child(1) { z-index: 1; }
-.card:nth-child(2) { z-index: 2; }
-.card:nth-child(3) { z-index: 3; }
-.card:nth-child(4) { z-index: 4; }
-.card:nth-child(5) { z-index: 3; }
-.card:nth-child(6) { z-index: 2; }
-.card:nth-child(7) { z-index: 1; }
+.card:nth-child(1) {
+    z-index: 1;
+}
+
+.card:nth-child(2) {
+    z-index: 2;
+}
+
+.card:nth-child(3) {
+    z-index: 3;
+}
+
+.card:nth-child(4) {
+    z-index: 4;
+}
+
+.card:nth-child(5) {
+    z-index: 3;
+}
+
+.card:nth-child(6) {
+    z-index: 2;
+}
+
+.card:nth-child(7) {
+    z-index: 1;
+}
 
 .cards.open .card:nth-child(1) {
     --rotate: -16deg;
     --translateX: -37vmin;
     --translateY: -4vmin;
 }
+
 .cards.open .card:nth-child(2) {
     --rotate: -10deg;
     --translateX: -29vmin;
     --translateY: -5vmin;
 }
+
 .cards.open .card:nth-child(3) {
     --rotate: -7deg;
     --translateX: -15vmin;
     --translateY: -7vmin;
 }
+
 .cards.open .card:nth-child(4) {
     --rotate: 0deg;
     --translateX: 0vmin;
     --translateY: -8vmin;
 }
+
 .cards.open .card:nth-child(5) {
     --rotate: 7deg;
     --translateX: 15vmin;
     --translateY: -7vmin;
 }
+
 .cards.open .card:nth-child(6) {
     --rotate: 10deg;
     --translateX: 29vmin;
     --translateY: -5vmin;
 }
+
 .cards.open .card:nth-child(7) {
     --rotate: 16deg;
     --translateX: 37vmin;
     --translateY: -4vmin;
 }
-.cards.open .card:hover { --offsetY: -5vmin; }
-.cards.open .card:hover + .card { --offsetTranslateX: 15vmin; }
-.cards.open .card:hover + .card + .card { --offsetTranslateX: 13vmin; }
-.cards.open .card:hover + .card + .card + .card { --offsetTranslateX: 11vmin; }
-.cards.open .card:hover + .card + .card + .card + .card { --offsetTranslateX: 7vmin; }
-.cards.open .card:has(+ .card:hover) { --offsetTranslateX: -15vmin; }
-.cards.open .card:has(+ .card + .card:hover) { --offsetTranslateX: -13vmin; }
-.cards.open .card:has(+ .card + .card + .card:hover) { --offsetTranslateX: -11vmin; }
-.cards.open .card:has(+ .card + .card + .card + .card:hover) { --offsetTranslateX: -7vmin; }
+
+.cards.open .card:hover {
+    --offsetY: -5vmin;
+}
+
+.cards.open .card:hover+.card {
+    --offsetTranslateX: 15vmin;
+}
+
+.cards.open .card:hover+.card+.card {
+    --offsetTranslateX: 13vmin;
+}
+
+.cards.open .card:hover+.card+.card+.card {
+    --offsetTranslateX: 11vmin;
+}
+
+.cards.open .card:hover+.card+.card+.card+.card {
+    --offsetTranslateX: 7vmin;
+}
+
+.cards.open .card:has(+ .card:hover) {
+    --offsetTranslateX: -15vmin;
+}
+
+.cards.open .card:has(+ .card + .card:hover) {
+    --offsetTranslateX: -13vmin;
+}
+
+.cards.open .card:has(+ .card + .card + .card:hover) {
+    --offsetTranslateX: -11vmin;
+}
+
+.cards.open .card:has(+ .card + .card + .card + .card:hover) {
+    --offsetTranslateX: -7vmin;
+}
