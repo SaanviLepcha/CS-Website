@@ -1,6 +1,7 @@
-import LightFXBackground from '@/components/LightFXBackground';
+
 import TeamCard from '@/src/components/common/TeamCard';
-import LightRays from '@/components/LightRays';
+
+import DotGrid from '@/components/DotGrid';
 
 export default function TeamPage() {
   const executiveMembers = [
@@ -26,24 +27,21 @@ export default function TeamPage() {
    
 
     
-      <LightFXBackground />
+      
      <div className="absolute inset-0 z-10 pointer-events-none">
       
-  <LightRays
-     raysOrigin="top-center"
-     raysColor="#ffb43f"
-     raysSpeed={1.5}
-     lightSpread={1}
-     rayLength={3}
-      followMouse={true}
-      mouseInfluence={0.3}
-      noiseAmount={0.1}
-      distortion={0}
-      className="custom-rays"
-      pulsating={false}
-      fadeDistance={1.7}
-      saturation={1}
-    />
+  <DotGrid
+    dotSize={2}
+    gap={16}
+    baseColor="#121212"
+    activeColor="#faa41a"
+    proximity={100}
+    shockRadius={370}
+    shockStrength={5}
+    resistance={1100}
+    returnDuration={1.5}
+  />
+
 
       </div>
       {/* Spacer for navbar separation */}
@@ -59,7 +57,6 @@ export default function TeamPage() {
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#FFA300' }}>
               Executive Committee
             </h2>
-            <div className="border-b border-white-600 w-3/4"></div>
             
             {/* Spacer between line and cards */}
             <div className="h-20"></div>
