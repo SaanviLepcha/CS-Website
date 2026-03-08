@@ -28,7 +28,17 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
 
     lenisRef.current = lenis
 
-    // Connect Lenis scroll to GSAP ScrollTrigger so they stay in sync
+    // Proxy ScrollTrigger to use Lenis scroll position (keeps animations moving with scroll)
+    ScrollTrigger.scrollerProxy(document.documentElement, {
+      scrollTop(value) {
+        if (arguments.length) lenis.scrollTo(value)
+        return lenis.scroll
+      },
+      getBoundingClientRect() {
+        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
+      },
+    })
+
     lenis.on('scroll', ScrollTrigger.update)
 
     // Use GSAP ticker to drive Lenis instead of a raw rAF loop
