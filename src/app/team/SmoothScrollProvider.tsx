@@ -31,7 +31,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     // Proxy ScrollTrigger to use Lenis scroll position (keeps animations moving with scroll)
     ScrollTrigger.scrollerProxy(document.documentElement, {
       scrollTop(value) {
-        if (arguments.length) lenis.scrollTo(value)
+        if (value !== undefined) lenis.scrollTo(value)
         return lenis.scroll
       },
       getBoundingClientRect() {

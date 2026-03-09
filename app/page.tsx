@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import TargetCursor from "@/src/components/common/TargetCursor";
+import Carousel from "@/components/Carousel";
 const TeamCard = dynamic(() => import("@/src/components/common/TeamCard"), { ssr: false });
 const HorizontalGallery = dynamic(() => import("@/src/app/gallery/HorizontalGallery"), { ssr: false });
 const CardStack = dynamic(() => import("@/src/components/common/CardStack"), { ssr: false });
@@ -95,7 +96,7 @@ export default function Home() {
         ) : null}
       </AnimatePresence>
 
-      <div></div>
+
       <div>
         <HorizontalGallery />
       </div>
@@ -106,6 +107,18 @@ export default function Home() {
         <CascadingCards />
       </div>
 
+
+
+      <div className="flex items-center justify-center w-full" style={{ height: '550px', position: 'relative' }}>
+        <Carousel
+          baseWidth={1000}
+          autoplay
+          autoplayDelay={3000}
+          pauseOnHover
+          loop
+          round={false}
+        />
+      </div>
 
     </>
   );
