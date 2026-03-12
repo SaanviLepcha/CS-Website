@@ -12,9 +12,9 @@ interface TopographicBackgroundProps {
 
 export default function TopographicBackground({
   className = "",
-  lineColor = "rgba(180, 140, 60, 0.75)",
+  lineColor = "rgba(180, 140, 60, 0.33)",
   backgroundColor = "#0d0d0d",
-  lineCount = 12,
+  lineCount = 5,
   animated = true,
 }: TopographicBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -60,7 +60,7 @@ export default function TopographicBackground({
       }
 
       ctx.strokeStyle = lineColor;
-      ctx.lineWidth = 0.9;
+      ctx.lineWidth = 0.2;
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
 
@@ -180,9 +180,9 @@ export function TopographicDemo() {
   return (
     <div style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh" }}>
       <TopographicBackground
-        lineColor="rgba(180, 140, 60, 0.75)"
+        lineColor="rgba(180, 140, 60, 0.33)"
         backgroundColor="#0d0d0d"
-        lineCount={14}
+        lineCount={5}
         animated={true}
       />
     </div>
